@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive | ng-init</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+        <script src="../Scripts/angular.js"></script>
+    </head>
+    <body ng-app>
+        <div class="container">
+            <div class="card text-center text-white">
+                <div class="card-header bg-secondary">
+                    <h3>Spider Man Comming Home</h3>
+                </div>
+                <div class="card-body bg-light">
+                    <img src="../Images/spiderman2.jpg" >
+                </div>
+                <div class="card-footer bg-secondary" ng-init="likes=0">
+                    <a class="text-decoration-none" href="#">
+                       <button ng-click="likes=likes+1" class="bg-dark text-success">
+                            <i class="fa fa-thumbs-up text-white font-weight-bolder" aria-hidden="true"></i>
+                       </button>
+                    </a>
+                   [{{likes}}] Likes &nbsp;
+                   <button class="btn btn-danger btn-sm" ng-click="likes=0">Reset</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

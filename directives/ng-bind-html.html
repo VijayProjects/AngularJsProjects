@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive | ng-bind-html</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../Scripts/angular.js"></script>
+        <script src="../Scripts/angular-sanitize.js"></script>
+        <script>
+            angular.module("DemoApp",['ngSanitize']);
+        </script>
+        
+    </head>
+    <body ng-app="DemoApp">
+        <div class="container">
+            <h2>Your Comments:[You can compose as HTML]</h2>
+            <div>
+                <textarea ng-model="txtArea" rows="5" cols="40"></textarea>
+            </div>
+            <br>
+            <h4 ng-bind-html="txtArea"></h4>
+        </div>
+    </body>   
+</html>
