@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive | ng-repeat event</title>
+        <link rel = "stylesheet" href = "../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src = "../Scripts/angular.js"></script>
+        <script>
+            angular.module("DemoApp",[]).controller("HomeController", ($scope) => {
+                $scope.cars = [
+                    {carName:'Audi-Q8', photo:'../Images/audi.jpg', likes:0, dislikes:0},
+                    {carName:'Benz', photo:'../Images/benz.jpg', likes:0, dislikes:0},
+                    {carName:'Ferrari', photo:'../Images/car3.jpg', likes:0, dislikes:0},
+                    {carName:'BMW', photo:'../Images/car1.jpg', likes:0, dislikes:0}
+                ];
+                $scope.LikesCounter = (car) => {
+                    car.likes++;
+                };
+                $scope.DisLikesCounter = (car) => {
+                    car.dislikes++;
+                };
+            });
+        </script>
+    </head>
+    <body ng-app = "DemoApp" ng-controller = "HomeController">
+        <div class = "container">
+            <div class = "row card-deck text-center">
+                <div ng-repeat = "car in cars">
+                    <div class = "card">
+                       <div class = "card-header text-primary">
+                           <h2>{{car.carName}}</h2>
+                       </div>
+                       <div class = "card-body">
+                           <img src = "{{car.photo}}" width="200" height="200">
+                       </div>
+                       <div class = "card-header">
+                           [{{car.likes}}]
+                           <button ng-click = "LikesCounter(car)" class="btn btn-success">Likes</button>
+                           [{{car.dislikes}}]
+                           <button ng-click = "DisLikesCounter(car)" class="btn btn-warning">DisLikes</button>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

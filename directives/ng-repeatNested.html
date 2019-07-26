@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive | ng-repeat Nested</title>
+        <script src="../Scripts/angular.js"></script>
+    </head>
+    <body ng-app>
+        <div ng-init = "shopping = [
+                            {category: 'Electronics', products: ['Mobile', 'Samsung TV', 'Watch']},
+                            {category: 'Shoes', products: ['Nike Casulas', 'Lee Cooper Boot']}        
+                                ]">   
+        </div>
+        <div ng-repeat = "item in shopping">
+            <details>
+                <summary>
+                    {{item.category}}
+                </summary>
+                <ul type="a">
+                    <li ng-repeat = "product in item.products">
+                        {{product}}
+                    </li>
+                </ul>
+            </details>
+        </div>
+    </body>
+</html>

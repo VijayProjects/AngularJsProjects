@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Directive | ng-repeat Nested</title>
+        <script src="../Scripts/angular.js"></script>
+        <style>
+            dt {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body ng-app>
+        <div ng-init = "topics = [
+                            {title: 'JavaScript', description: 'This is JavaScript Tutorial'},
+                            {title: 'Anguar Js', description: 'This is Angular Js Tutorial'}        
+                                ]">   
+        </div>
+        <dl>
+            <div ng-repeat = "item in topics">
+                <dt>{{item.title}}</dt>
+                <dd>{{item.description}}</dd>
+            </div>
+        </dl>
+    </body>
+</html>
