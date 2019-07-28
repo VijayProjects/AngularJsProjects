@@ -26,13 +26,13 @@
             <div class = "row card-deck text-center">
                 <div ng-repeat = "car in cars">
                     <div class = "card">
-                       <div class = "card-header text-primary">
+                       <div class = "card-header text-white bg-secondary">
                            <h2>{{car.carName}}</h2>
                        </div>
                        <div class = "card-body">
                            <img src = "{{car.photo}}" width="200" height="200">
                        </div>
-                       <div class = "card-header">
+                       <div class = "card-footer bg-secondary">
                            [{{car.likes}}]
                            <button ng-click = "LikesCounter(car)" class="btn btn-success">Likes</button>
                            [{{car.dislikes}}]
@@ -40,7 +40,7 @@
                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div><!--/card-deck-->
+        </div> <!--/container-->
     </body>
 </html>

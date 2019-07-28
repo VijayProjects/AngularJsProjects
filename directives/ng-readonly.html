@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ng-disabled</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <div class="container">
+     <input type="checkbox" ng-model="checked">Check here to edit 
+     <br>
+     Your Name
+     <input ng-readonly="!checked" type="text" class="form-control-sm" value="Vijay">
+     <br><br>
+     Your Email
+     <input ng-readonly="!checked" type="text" class="form-control-sm" value="vijay@gmail.com">
+     <br><br>
+     <button ng-disabled="!checked" class="btn btn-primary">Update Record</button>
+    </div>
+  </body>
+</html>

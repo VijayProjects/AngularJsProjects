@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ng-repeat Add products</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var newProduct = {};
+      var app = angular.module("DemoApp",[]);
+      app.controller("MainController", $scope => {
+        $scope.products = [
+          {id: 1, name: 'Samsung Tv', price: 44399.00},
+          {id: 2, name: 'Nike Casuals', price: 1399.00}
+        ];
+        /* function to Add product in products */
+        $scope.addProduct = prod => {
+          prod.Id = $scope.products.length+1;
+          newProduct = {id:prod.Id, name:prod.Name, price:prod.Price};
+          $scope.products.push(newProduct);
+          alert("record is added");
+          prod.Name = '';
+          prod.Price = '';
+        };
+        /* function to delete product from table */
+        $scope.deleteProduct = id => {
+          index = id-1;
+          delProuct = confirm("Are you sure to delete?");
+          (delProuct === true)?$scope.products.splice(index, 1):'';   
+        };
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="MainController">
+    <div class="container">
+      <div class="row">
+        <div class="col-5">
+          <form>
+            <h2>Add Products Form</h2>
+            <div class="form-group">
+              <label>Product Id</label>
+              <input class="form-control" ng-model="prod.Id" type="number" value="{{products.length+1}}" readonly>
+            </div>
+            <div class="form-group">
+              <label>Product Name</label>
+              <input class="form-control" ng-model="prod.Name" type="text">
+            </div>
+            <div class="form-group">
+              <label>Price</label>
+              <input class="form-control" ng-model="prod.Price" type="text">
+            </div>
+            <br>
+            <button ng-click="addProduct(prod)" class="btn btn-primary btn-block">Add Product</button>
+          </form>
+        </div><!--left panel-->
+        <div class="col-7">
+          <h2 class="text-center text-danger">Product Details</h2>
+          <table class="table table-hover">
+            <thead class="bg-dark text-white text-uppercase">
+              <th>ProductId</th>
+              <th>ProductName</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </thead>
+            <tbody>
+              <tr ng-repeat="product in products">
+                <td>{{product.id}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>
+                  <button ng-click="deleteProduct(product.id)" class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div><!--/ row-->
+    </div><!--/ container-->
+  </body>
+</html>

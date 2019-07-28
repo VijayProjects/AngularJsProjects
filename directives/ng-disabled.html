@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ng-disabled</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <div class="container">
+      <br>
+      <div class="form-group">
+      <textarea class="text-center" cols="50" rows="5">
+      Depending on how you obtained the Windows software, this is a license agreement between (i) you and the device manufacturer or software installer that distributes the software with your device; or (ii) you and Microsoft Corporation (or, based on where you live or if a business where your principal place of business is located, one of its affiliates) if you acquired the software from a retailer. Microsoft is the device manufacturer for devices produced by Microsoft or one of its affiliates, and Microsoft is the retailer if you acquired the software directly from Microsoft.
+      </textarea>
+    </div>
+      <div class="form-group">
+        <label class="form-check-label">
+          <input ng-model="checked" type="checkbox" class="form-check-input">Accept Licence aggrement
+        </label>
+      </div>
+      <button ng-disabled="!checked" class="btn btn-success">Install</button>
+    </div>
+  </body>
+</html>
