@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngInclude</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="Scripts/angular.js"></script>
+  <script>
+     var app = angular.module("DemoApp", []);
+     app.controller("HomeController", $scope => {
+      $scope.showPreview = false;
+      $scope.showEmpTbl = true;
+      $scope.employeeDetails = {};
+      $scope.employees = [
+        {empId: 1001, empName: 'Alita', salary: 30000, desg: 'SSE', exp: '3Years', photo: 'Images/emp4.jpg'},
+        {empId: 1002, empName: 'John', salary: 50000, desg: 'Manager', exp: '5Years', photo: 'Images/emp1.jpg'},
+        {empId: 1003, empName: 'Jessica', salary: 15000, desg: 'Cleark', exp: '2Years', photo: 'Images/emp3.jpg'},
+        {empId: 1004, empName: 'Marsh', salary: 13000, desg: 'Analyst', exp: '4Years', photo: 'Images/emp2.jpg'}
+      ];
+      $scope.clickPreview = id => {
+        $scope.employeeDetails = $scope.employees[id];
+        $scope.showEmpTbl = false;
+        $scope.showPreview = true;
+      }
+
+      $scope.showEmpTable = () => {
+        $scope.showPreview = false;
+        $scope.showEmpTbl = true;
+      }
+    });
+  </script>
+  <style>
+    .emp-preview {
+      border: 1px solid blue;
+      margin: auto;
+      padding: 20px;
+      width: 70%;
+      
+    }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <div ng-show="showEmpTbl">
+      <h2>Employee Table</h2>
+      <table class="table table-hover">
+        <thead class="bg-dark text-white text-uppercase">
+          <th>EmpId</th>
+          <th>EmployeeName</th>
+          <th>Designation</th>
+          <th>Preview</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat=" emp in employees">
+            <td>{{emp.empId}}</td>
+            <td>{{emp.empName}}</td>
+            <td>{{emp.desg}}</td>
+            <td>
+              <button ng-click="clickPreview($index)" class="btn btn-primary">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="emp-preview" ng-show="showPreview">
+      <h2 class="text-danger">Emplyee Details</h2>
+      <div class="row">
+        <div class="col-5">
+          <img src="{{employeeDetails.photo}}">
+        </div>
+        <div class="col-2">
+            EMPID:<b>&nbsp;<span>{{employeeDetails.empId}}</span></b><br>
+            NAME:<b>&nbsp;<span>{{employeeDetails.empName}}</span></b><br>
+            DESGNATiON:<b>&nbsp;<span>{{employeeDetails.desg}}</span></b><br>
+            SALARY:<b>&nbsp;<span>{{employeeDetails.salary}}</span></b><br>
+            EXP:<b>&nbsp;<span>{{employeeDetails.exp}}</span></b><br> 
+            <br>
+            <button class="btn btn-success" ng-click="showEmpTable()">BACK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

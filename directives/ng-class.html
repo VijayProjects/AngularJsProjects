@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ng-class</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../Scripts/angular.js"></script>
+    <style>
+      .textEffects {
+        color: red;
+        text-align: center;
+      }
+      .backEffects {
+        background-color: yellow;
+      }
+      .borderEffects {
+        border: 2px dashed red;
+      }
+    </style>
+  </head>
+  <body ng-app>
+    <div class="container">
+      <fieldset>
+        <legend>Type Your Styles</legend>
+        <input class="form-control rounded" type="text" ng-model="effects"
+          placeholder="eg:textEffects, backEffects, borderEffects">
+      </fieldset>
+      <br>
+      <h2 ng-class="effects">Welcome to Angular Js</h2>
+      <br>
+      <fieldset>
+        <legend>Choose Your Effects</legend>
+        <input class="form-check-inline" type="checkbox" ng-model="backStyle">Backgroud Effects<br>
+        <input class="form-check-inline" type="checkbox" ng-model="borderStyle">Border Effects<br>
+        <input class="form-check-inline" type="checkbox" ng-model="textStyle">Text Effects<br>
+      </fieldset>
+      <br>
+      <h2 ng-class="{textEffects:textStyle, backEffects:backStyle, borderEffects:borderStyle}">
+        ngClass Object Referece
+      </h2>
+    </div>
+  </body>
+</html>

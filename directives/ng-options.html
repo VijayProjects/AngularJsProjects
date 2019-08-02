@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngOption</title>
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <h2>Dynamically add option element into select element</h2>
+    <div ng-init="courses=['Angular8','AngularJs','UI Technology']"></div>
+    <select ng-model="lstCourses" ng-options="course for course in courses"></select>
+  </body>
+</html>

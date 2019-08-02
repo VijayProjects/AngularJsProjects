@@ -22,7 +22,7 @@
                         <th>Preview</th>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="product in products">
+                        <tr ng-class-even="['bg-light', 'text-danger']" ng-class-odd="['bg-secondary','text-white']" ng-repeat="product in products">
                             <td>{{product.id}}</td>
                             <td>{{product.name}}</td>
                             <td>{{product.price}}</td>

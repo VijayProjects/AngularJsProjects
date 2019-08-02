@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngCopy, ngPopy ngPaste</title>
+  <script src="../Scripts/angular.js"></script>
+</head>
+<body ng-app oncontextmenu="return false" onselectstart="return false" oncut="return false" oncopy="return false" onpaste="return false">
+  <h2>ngCut, ngCopy and ngPaste</h2>
+  <div ng-init="msg=''">
+  <textarea rows="4" cols="40" ng-cut="msg='Removed and Placed in Clipboard'" ng-copy="msg='Copied from Clipboard'"
+            ng-paste="msg='Inserted to Clipboard'">
+  </textarea>
+</div>
+<br>
+{{msg}}
+</body>
+</html>

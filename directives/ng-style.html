@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngStyle</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp",[]);
+      app.controller("HomeController", $scope => {
+       $scope.align ="";
+       $scope.textColor ="";
+       $scope.backColor ="";
+       $scope.objStyle ={};
+       $scope.applyStyles = () =>{
+         $scope.objStyle = {
+           'text-align': $scope.align ,
+           'background-color': $scope.backColor,
+           'color': $scope.textColor
+         }
+       }
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <fieldset>
+      <legend>ngStyle Color Form</legend>
+      <h2>Text Alignment</h2>
+      <input type="radio" value="left" ng-model="align" name="align">Left
+      <input type="radio" value="center" ng-model="align" name="align">Center
+      <input type="radio" value="right" ng-model="align" name="align">Right
+      <br>
+      <h2>Text Color</h2>
+      <select ng-model="textColor">
+        <option>Yellow</option>
+        <option>Red</option>
+        <option>Green</option>
+      </select>
+      <br>
+      <h2>Background Color</h2>
+      <select ng-model="backColor">
+        <option>Yellow</option>
+        <option>Red</option>
+        <option>Green</option>
+      </select>
+    </fieldset>
+    <br>
+    <button ng-click="applyStyles()">Apply</button>
+    <br>
+    <div>
+      <h1 ng-style="objStyle">Welcome to Angular ngStyle Directive</h1>
+    </div>
+  </body>
+</html>
