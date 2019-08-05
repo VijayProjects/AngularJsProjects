@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngPattern</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope => {
+      $scope.lstcities = "";
+      $scope.holder = "";
+      $scope.regExp = "";
+      $scope.flag = "";
+      $scope.changedCountry = () => {
+        switch($scope.lstcities) {
+          case 'India':
+          getDetails("eg: +91 and 10 digits", "../Images/india.png", "\\+91[0-9]{10}");
+          break;
+          case 'Us':
+          getDetails("eg: +001 and 6 digits", "../Images/usa.png", "\\+001[0-9]{6}");
+          break;
+          case 'Uk':
+          getDetails("eg: +44 and 8 digits", "../Images/uk.png", "\\+44[0-9]{8}");
+          break;
+        }
+      } // changedCountry
+      function getDetails(holder, flag, regExp) {
+        $scope.holder = holder;
+        $scope.flag = flag;
+        $scope.regExp = regExp;
+      }
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container text-center">
+    <form name="frmRegister">
+      <h2>Select Your Country</h2>
+      <div class="form-group" ng-init="cities=['India','Us','Uk']">
+        <select ng-change="changedCountry()" class="form-control" ng-model="lstcities" ng-options="city for city in cities"></select>
+      </div> 
+      <div>
+        <img ng-src="{{flag}}" width="100" height="100">
+      </div>
+      <br>
+      <div class="form-group">
+        <h2>Verify Your Mobile Number</h2>
+        <input type="text" class="form-control" ng-pattern="regExp" placeholder="{{holder}}" name="txtMobile" ng-model="txtMobile">
+        <span style="color:red" ng-if="frmRegister.txtMobile.$error.pattern">Invaid Mobile Number</span>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
