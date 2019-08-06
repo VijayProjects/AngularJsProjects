@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngSubmit</title>
+    <script src="../Scripts/angular.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+        $scope.submitClick = product => {
+          $scope.Product = product;
+        };
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <div class="container">
+      <form ng-submit="submitClick(product)">
+        <dl>
+          <dt>Your Name</dt>
+          <dd>
+            <input type="text" class="form-control-static" name="txtName" ng-model="product.Name">
+          </dd>
+          <dt>Your Email</dt>
+          <dd>
+            <input type="text" class="form-control-static" name="txtEmail" ng-model="product.Email">
+          </dd>
+        </dl>
+        <button class="btn btn-primary">Submit</button>
+      </form>
+      <br>
+      <div>
+        <pre>
+          {{Product | json}}
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>

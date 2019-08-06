@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngForm</title>
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <form name="frmRegister">
+      <ng-form name="frmLogin">
+        Your Name:
+        <input type="text" ng-model="txtName" name="txtName" required>
+        <span ng-if="frmLogin.txtName.$invalid">Name is required</span>
+      </ng-form>
+    </form>
+  </body>
+</html>

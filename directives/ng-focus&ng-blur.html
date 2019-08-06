@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngFocus and ngBlur</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+        $scope.msg = '';
+        $scope.show = () => {
+          $scope.msg = 'Name in Block Letters';
+        };
+        $scope.hide = () => {
+          $scope.msg = '';
+          $scope.txtName = $scope.txtName.toUpperCase();
+        };
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    Your Name:
+    <input ng-focus="show()" ng-blur="hide()" type="text" ng-model="txtName" size="50" placeholder="Name in block letters">
+    <span>{{msg}}</span>
+  </body>
+</html>

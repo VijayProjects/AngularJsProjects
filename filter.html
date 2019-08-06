@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filter</title>
+    <script src="Scripts/angular.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+       $scope.product = {
+          Name:'Samsung Tv', 
+          Price:34000.60,
+          Mfd: new Date("2019/08/06")
+        };
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <div class="container">
+      <dl>
+        <dt>Product Name</dt>
+        <dd>{{product.Name | uppercase}}</dd>
+        <dt>Product Price</dt>
+        <dd>{{product.Price | currency:'&#8377;'}}</dd>
+        <dt>Manufacture Date</dt>
+        <dd>{{product.Mfd | date:'d, MMMM yyyy'}}</dd>
+      </dl>
+    </div>
+  </body>
+</html>
