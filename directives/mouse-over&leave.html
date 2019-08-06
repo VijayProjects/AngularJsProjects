@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Directive | ngMouseOver and ngMouserLeave</title>
+  <script src="../Scripts/angular.js"></script>
+</head>
+<body ng-app>
+  <h2>mouseover and mouseleave</h2>
+  <div ng-init="ads='../Images/pepsi.jpg'">
+    <img src="{{ads}}" ng-mouseover="ads='../Images/jio1.jpg'" ng-mouseleave="ads='../Images/pepsi.jpg'">
+  </div>
+</body>
+</html>
