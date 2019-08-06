@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <title>Directive | ngKeyup</title>
+  <head>
+    <script src="../scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+        $scope.userList = [
+          {userName: 'john'},
+          {userName: 'john_12'},
+          {userName: 'john_ng'},
+          {userName: 'david'}
+        ];
+        $scope.uname = '';
+        $scope.userErrMsg = '';
+        $scope.userStyleObj = {};
+        $scope.userPwd = '';
+        $scope.regExp = /(?=.*[A-Z]\w{4,10})/;
+        $scope.userPwdMsg = '';
+        $scope.userPwdStyleObj = {};
+        $scope.min = '';
+        $scope.max = '';
+        $scope.value = '';
+        $scope.low = '';
+        $scope.high = '';
+
+        $scope.verifyUser = () => {
+          for(const user of $scope.userList) {
+            if ($scope.uname === user.userName) {
+              $scope.userErrMsg = 'User is already taken try another?'
+              $scope.userStyleObj = {
+                color: 'red'
+              }
+              break;
+            } else {
+              $scope.userErrMsg = 'Available';
+              $scope.userStyleObj = {
+                color: 'green'
+              }
+            }
+          }
+        } // verifyUser
+        $scope.verifyPassword = () => {
+          if ($scope.userPwd.match($scope.regExp)) {
+            grade(1, 100, 100, 0, 0);
+            $scope.userPwdMsg = 'Strong Password'
+            $scope.userPwdStyleObj = {
+              color: 'green'
+            } 
+          } else {
+            if ($scope.userPwd.length < 4) {
+              grade(1, 100, 100, 60, 80);
+              $scope.userPwdMsg = 'Poor Password'
+              $scope.userPwdStyleObj = {
+              color: 'red'
+              }  
+            } else {
+              $scope.userPwdMsg = 'Weak Password'
+              grade(1, 100, 100, 40, 80);
+              $scope.userPwdStyleObj = {
+              color: 'yellow'
+              } 
+            }
+          }
+        } // verifyPassword
+        function grade(min, max, value, low, high) {
+          $scope.min = min;
+          $scope.max = max;
+          $scope.value = value;
+          $scope.low = low;
+          $scope.high = high;
+        }
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <div>
+      <dt>UserName</dt>
+      <dd>
+        <input ng-keyup="verifyUser()" type="text" size="40" ng-model="uname">
+        <span ng-style="userStyleObj">{{userErrMsg}}</span>
+      </dd>
+    </div>
+    <div>
+      <dt>User Password</dt>
+      <dd>
+        <input ng-keyup="verifyPassword()" type="text" size="40" ng-model="userPwd">  
+        <meter min="{{min}}" max="{{max}}" value="{{value}}" low="{{low}}" high="{{high}}"></meter>
+        <span ng-style="userPwdStyleObj">{{userPwdMsg}}</span>
+      </dd>
+    </div>
+  </body>
+</html>
