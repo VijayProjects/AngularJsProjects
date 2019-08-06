@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ngMouseDown</title>
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <h2>MouseDown to bulb on</h2>
+    <div ng-init="bulb='../Images/bulboff.jpg'"></div>
+    <img ng-src="{{bulb}}" ng-mouseup="bulb='../Images/bulboff.jpg'" ng-mousedown="bulb='../Images/bulbon.jpg'">
+  </body>
+</html>

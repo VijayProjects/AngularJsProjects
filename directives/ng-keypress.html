@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Directive | ng-keypress</title>
+    <script src="../Scripts/angular.js"></script>
+  </head>
+  <body ng-app>
+    <h2>Insert Your Text Here..</h2>
+    <input type="text" ng-keypress="event=$event">
+    <span>{{(event.keyCode >= 65 && event.keyCode <= 90)?"Warning Caps on..!" : ""}}</span>
+    <br><br>
+    <dl>
+      <dt>keyCode</dt>
+      <dd>{{event.keyCode}}</dd>
+      <dt>charCode</dt>
+      <dd>{{event.charCode}}</dd>
+      <dt>which</dt>
+      <dd>{{event.which}}</dd>
+      <dt>shiftKey</dt>
+      <dd>{{event.shiftKey}}</dd>
+    </dl>
+  </body>
+</html>
