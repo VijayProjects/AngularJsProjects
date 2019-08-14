@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filters | number</title>
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope => {
+      $scope.price = 45000.60;
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>{{ price | number:4}}</h2>
+  <h2>{{ price | currency}}</h2>
+  <h2>{{ price | currency:'INR'}}</h2>
+  <h2>{{ price | currency:'&#8377'}}</h2>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filters | orderBy</title>
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope => {
+      $scope.courses = ['Java', '.Net', 'PHP', 'Python', 'AWS', 'Mean Stack', 'Devops'];
+
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>Ascending order(orderBy:'')</h2>
+  <ol>
+    <li ng-repeat = "course in courses | orderBy:''">{{course}}</li>
+  </ol>
+  <h2>Descending orde(orderBy:'':true)</h2>
+  <ol>
+    <li ng-repeat = "course in courses | orderBy:'':true">{{course}}</li>
+  </ol>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filters | orderByDynamic</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+        $scope.products = [
+          {id:1, name:'tv', price:45000.99},
+          {id:2, name:'shoe', price:2500.99},
+          {id:3, name:'mobile', price:15000.99},
+          {id:4, name:'watch', price:599.99}
+        ];
+        $scope.sortItem = ['id','name', 'price'];
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <div class="container">
+      <div class="form-group">
+        <label>Sort Products</label>
+        <select class="form-control-sm" ng-model="sort" ng-options="sortString for sortString in sortItem"></select>
+        <input type="checkbox" ng-model="reverse">Reverse
+      </div>
+    </div>
+    <br>
+    <h2 class="text-danger">Product Details</h2>
+    <table class="table table-hover">
+      <thead class="bg-dark text-white">
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in products | orderBy:sort:reverse">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

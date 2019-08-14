@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filters | uppercase and lowercase</title>
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope => {
+      $scope.msg = 'Hello Vijay';
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>{{ msg | uppercase}}</h2>
+  <h2>{{ msg | lowercase}}</h2>
+</body>
+</html>
