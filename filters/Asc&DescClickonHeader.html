@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filters | orderByDynanic row header</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      //module
+      var app = angular.module("DemoApp", []);
+      //controller
+      app.controller("HomeController", $scope => {
+        $scope.products = [
+          {id:1, name:'tv', price:45000.99, mfd: new Date('2019/08/12')},
+          {id:2, name:'shoe', price:2500.99, mfd: new Date('2019/01/26')},
+          {id:3, name:'mobile', price:15000.99, mfd: new Date('2019/06/12')},
+          {id:4, name:'watch', price:599.99, mfd: new Date('2019/03/03')}
+        ];
+        //sort column
+        $scope.sortColumn = 'id';
+        //reverse column
+        $scope.sortReverse = false;
+        $scope.sort = fieldName => {
+          $scope.sortColumn = fieldName;
+          if($scope.sortReverse) {
+            $scope.sortReverse = false;
+          } else {
+            $scope.sortReverse = true;
+          }
+        }
+        // remove and change class
+        $scope.sortClass = function(col){
+          if($scope.sortColumn === col ){
+            if($scope.sortReverse){
+              return 'arrow-down'; 
+            }else{
+              return 'arrow-up';
+            }
+          }else{
+            return '';
+          }
+        } 
+      });
+    </script>
+    <style type="text/css">
+     table th {
+       cursor: pointer;
+     }
+     .arrow-down:after,.arrow-up:after{
+      content: ' ';
+      position: relative;
+      left: 2px;
+      border: 10px solid transparent;
+      }
+
+      .arrow-down:after{
+      top: 15px;
+      border-top-color: black;
+      }
+
+      .arrow-up:after{
+      bottom: 15px;
+      border-bottom-color: black;
+      }
+
+      .arrow-down,.arrow-up{
+      padding-right: 10px;
+      }
+
+    </style>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <nav class="navbar navbar-expand-lg bg-info navbar-dark text-white">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="#">
+        <img src="../Images/flipkartlogo.jpg" alt="logo" style="width:50px; height:50px;">
+      </a>
+      
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Service</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container">
+    <h2 class="text-danger">Product Details</h2>
+    <table class="table table-hover table-bordered w-50">
+      <thead class="bg-light text-uppercase">
+          <th ng-click="sort('id')" ng-class="sortClass('id')">ProductId</th>
+          <th ng-click="sort('name')" ng-class="sortClass('name')">ProductName</th>
+          <th ng-click="sort('price')" ng-class="sortClass('price')">Price</th>
+          <th ng-click="sort('mfd')" ng-class="sortClass('mfd')">Manufacture</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="product in products | orderBy:sortColumn:sortReverse">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.mfd | date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

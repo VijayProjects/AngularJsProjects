@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Filters | limitTo</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/datatables.net/js/jquery.dataTables.js"></script>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", $scope => {
+        $scope.products = [
+          {id:1, name:'Samsung TV', price:34500.00},
+          {id:2, name:'Redmi', price:14500.00},
+          {id:3, name:'Nike Shoe', price:2500.00},
+          {id:4, name:'Lee Cooper Shoe', price:1500.00},
+          {id:5, name:'Watch', price:3900.00},
+          {id:6, name:'Samsung TV', price:34500.00},
+          {id:7, name:'Redmi', price:14500.00},
+          {id:8, name:'Nike Shoe', price:2500.00},
+          {id:9, name:'Lee Cooper Shoe', price:1500.00},
+          {id:10, name:'Watch', price:3900.00},
+          {id:11, name:'Samsung TV', price:34500.00},
+          {id:12, name:'Redmi', price:14500.00},
+          {id:13, name:'Nike Shoe', price:2500.00},
+          {id:14, name:'Lee Cooper Shoe', price:1500.00},
+          {id:15, name:'Watch', price:3900.00},
+          {id:16, name:'Samsung TV', price:34500.00},
+          {id:17, name:'Redmi', price:14500.00},
+          {id:18, name:'Nike Shoe', price:2500.00},
+          {id:19, name:'Lee Cooper Shoe', price:1500.00},
+          {id:20, name:'Watch', price:3900.00},
+          {id:21, name:'Watch', price:3900.00},
+          {id:22, name:'Samsung TV', price:34500.00},
+          {id:23, name:'Redmi', price:14500.00},
+          {id:24, name:'Nike Shoe', price:2500.00},
+          {id:25, name:'Lee Cooper Shoe', price:1500.00},
+          {id:26, name:'Watch', price:3900.00},
+          {id:27, name:'Samsung TV', price:34500.00},
+          {id:28, name:'Redmi', price:14500.00},
+          {id:29, name:'Nike Shoe', price:2500.00},
+          {id:30, name:'Lee Cooper Shoe', price:1500.00},
+          {id:31, name:'Watch', price:3900.00},
+          {id:32, name:'Samsung TV', price:34500.00},
+          {id:33, name:'Redmi', price:14500.00},
+          {id:34, name:'Nike Shoe', price:2500.00},
+          {id:35, name:'Lee Cooper Shoe', price:1500.00},
+          {id:36, name:'Watch', price:3900.00},
+          {id:37, name:'Samsung TV', price:34500.00},
+          {id:38, name:'Redmi', price:14500.00},
+          {id:39, name:'Nike Shoe', price:2500.00},
+          {id:40, name:'Lee Cooper Shoe', price:1500.00}  
+        ];
+      });
+    </script>
+    <script>
+      $(document).ready(function() {
+       $('table').DataTable( {
+        "pagingType": "full_numbers"
+       } );
+    } );
+    </script>
+    <style>
+      a:hover {
+        cursor: pointer;
+      }
+      a {
+        padding: 5px;
+      }
+      tr:nth-child(even) {
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <div class="container">
+      <h2>Products List-({{products.length}})</h2>
+      <table class="table table-hover">
+        <thead class="bg-dark text-white">
+          <th>Product ID</th>
+          <th>Product Name</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="product in products | limitTo:productsPerPage:startsWith">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
