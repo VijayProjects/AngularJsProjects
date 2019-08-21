@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carousel using $interval</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope, $interval) {
+      $scope.cars = [
+        {carName:'Audi-Q7', photo:'Images/audi.jpg'},
+        {carName:'VoksWagner', photo:'Images/vokswagner.jpg'},
+        {carName:'Benz', photo:'Images/benz.jpg'},
+        {carName:'BMW-A20', photo:'Images/car3.jpg'}
+      ];
+      var count = 0;
+      function GetDetails() {
+        count++;
+        if(count === $scope.cars.length) {
+          count = 0;
+        }
+        $scope.slider = count;
+        $scope.title = $scope.cars[count].carName;
+        $scope.pic = $scope.cars[count].photo;
+      }
+      $scope.title = 'Audi-Q7';
+      $scope.pic = 'Images/audi.jpg';
+      //Play 
+      $scope.Play = () => {
+        $scope.status = 'Playing';
+        window.promice = $interval(GetDetails, 3000);
+      }
+      $scope.Pause = () => {
+        $scope.status = 'Pause';
+        $interval.cancel(promice);
+      }
+      $scope.slider = 0;
+      //slider 
+      $scope.sliderChanged = function() {
+        $scope.status = 'Manual';
+        $scope.title = $scope.cars[$scope.slider].carName;
+        $scope.pic = $scope.cars[$scope.slider].photo;
+      }
+    });
+  </script>
+</head>
+<body ng-app="DemoApp", ng-controller="HomeController">
+  <div class="container">
+    <div class="card text-center">
+      <div class="card-header">
+        <h2>{{title}}</h2>
+        ({{status}})
+      </div>
+      <div class="card-header">
+        <img ng-src="{{pic}}" width="600" height="300">
+        <br><br>
+        1<input ng-change="sliderChanged()" type="range" min="0" max="{{cars.length-1}}" ng-model="slider" class="w-50 ">4
+      </div>
+      <div class="card-footer">
+        <button ng-click="Play()" class="btn btn-success">Play</button>
+        <button ng-click="Pause()" class="btn btn-danger">Pause</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

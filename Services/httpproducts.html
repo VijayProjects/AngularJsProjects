@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Service | $http</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope, $http) {
+      //get Resourse from server
+      $http.get("products.json")
+           .then(function(response) {
+            $scope.products = response.data;
+           },
+           function(){
+            $scope.products = response.data;
+           });
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <h2>Products List</h2>
+    <table class="table table-hover">
+      <thead>
+        <th>ProductId</th>
+        <th>ProductName</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in products">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

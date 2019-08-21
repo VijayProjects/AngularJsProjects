@@ -1,0 +1,8 @@
+[
+  {"id":1001, "name": "Samsung TV", "price":45600.45},
+  {"id":1002, "name": "Mobile", "price":21600.45},
+  {"id":1003, "name": "Lee Cooper Boot", "price":2600.45},
+  {"id":1004, "name": "Nike Casuals", "price":1500.45},
+  {"id":1005, "name": "Watches", "price":600.45},
+  {"id":1006, "name": "Men Fashions", "price":1600.45}
+]

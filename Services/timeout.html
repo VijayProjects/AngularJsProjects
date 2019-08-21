@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Service | timeout</title>
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", ($scope, $timeout) => {
+      $scope.msg = '';
+      function msg1() {
+        $scope.msg = 'Hello !';
+      }
+      function msg2() {
+        $scope.msg = 'Angular JS';
+      }
+      function msg3() {
+        $scope.msg = 'How are doing ?';
+      }
+      var m1 = $timeout(msg1, 2000);
+      var m2 = $timeout(msg2, 5000);
+      var m3 = $timeout(msg3, 7000);
+      $scope.RemoveTask = () => $timeout.cancel(m2);
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div align="center">
+      <h2 >{{msg}}</h2>
+      <button ng-click="RemoveTask()">Remove Message 2</button>
+  </div>
+</body>
+</html>

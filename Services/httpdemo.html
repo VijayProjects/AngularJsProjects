@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Service | $http</title>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    //controller
+    app.controller("HomeController", function($scope, $http) {
+      $scope.responseDetails;
+      //get Resource
+      $http({
+        method: 'GET',
+        url: '../demo.html'
+      }).then(function onsuccess(response) {
+        $scope.responseDetails = response;
+      },function onfailure(response) {
+        $scope.responseDetails = response
+      });
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>http service</h2>
+  <pre>
+      {{responseDetails | json}}
+  </pre>
+</body>
+</html>

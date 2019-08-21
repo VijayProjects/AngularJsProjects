@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Service | $location</title>
+    <script src="../Scripts/angular.js"></script>
+    <script>
+      var app = angular.module("DemoApp", []);
+      app.controller("HomeController", ($scope, $location) => {
+        $scope.url = $location.absUrl();
+        $scope.serverName = $location.href;
+        $scope.protocal = location.protocal;
+        $scope.path = location.pathname;
+      });
+    </script>
+  </head>
+  <body ng-app="DemoApp" ng-controller="HomeController">
+    <h2>Client Location Details</h2>
+    <dl>
+      <dt>URL</dt>
+      <dd>{{url}}</dd>
+      <dt>ServerName</dt>
+      <dd>{{serverName}}</dd>
+      <dt>Protocal</dt>
+      <dd>{{protocal}}</dd>
+      <dt>Path</dt>
+      <dd>{{path}}</dd>
+    </dl>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Validation | InputStateValidation</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope) {
+      $scope.lstCourses = "";
+      $scope.IsCourseInvalid = false;
+      //Verify Courses
+      $scope.verifyCourse = function() {
+        ($scope.lstCourses === 'nocourse')?$scope.IsCourseInvalid = true : $scope.IsCourseInvalid = false;
+      }
+      //verify Even
+      $scope.IsEven;
+      $scope.IsEvenInvalid = false;
+      $scope.verifyEven = function() {
+        ($scope.IsEven%2 === 0)?$scope.IsEvenInvalid = false : $scope.IsEvenInvalid = true;
+      }
+    });
+  </script>
+  <style>
+    span {
+      color:red;
+    }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <div class="w-50 m-auto border p-4 bg-light">
+      <h2 class="text-danger text-center">Register User</h2>
+      <form name="frmRegister" novalidate>
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="text" name="txtName" ng-model="txtName" class="form-control"
+            required ng-minlength="4" ng-maxlength="10">
+            <span ng-if="frmRegister.txtName.$touched && frmRegister.txtName.$error.required">Name is required</span>
+            <span ng-if="frmRegister.txtName.$error.minlength">Name is too short..</span>
+            <span ng-if="frmRegister.txtName.$error.maxlength">Name is too long..</span>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="text" name="txtMobile" ng-model="txtMobile" class="form-control"
+            required pattern="\+91[0-9]{10}">
+            <span ng-if="frmRegister.txtMobile.$touched && frmRegister.txtMobile.$error.required">Mobile is required</span>
+            <span ng-if="frmRegister.txtMobile.$error.pattern">Invalid Mobile</span>
+        </div>
+        <div class="form-group">
+          <label>Choose Course</label>
+          <select ng-change="verifyCourse()" class="form-control" ng-model="lstCourses">
+            <option value="nocourse">Select a Course</option>
+            <option value="java">Java</option>
+            <option value=".net">DotNet</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+          </select>
+          <span ng-if="IsCourseInvalid">course is mandatory</span>
+        </div>
+        <div class="form-group">
+          <label>Enter Even</label>
+          <input type="text" name="txtEven" ng-model="IsEven" class="form-control" ng-blur="verifyEven()" required>
+          <span ng-if="frmRegister.IsEven.$error.required">even number is mandatory</span>
+          <span ng-if="IsEvenInvalid">even number is mandatory</span>
+        </div>
+        <br>
+        <button class="btn btn-primary btn-block" ng-disabled="frmRegister.$invalid">Register</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

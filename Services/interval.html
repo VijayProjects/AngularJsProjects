@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Service | $interval</title>
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope, $interval) {  
+      function getTime() {
+        $scope.cloak = new Date().toLocaleTimeString();
+      }
+      //start cloak
+      $scope.startCloak = () => window.promice = $interval(getTime,1000);
+      //stop cloak
+      $scope.stopCloak = () => $interval.cancel(promice);
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div align="center">
+    <h2>{{cloak}}</h2>
+    <br>
+    <button ng-click="startCloak()">Start</button>
+    <button ng-click="stopCloak()">Stop</button>
+  </div>
+</body>
+</html>

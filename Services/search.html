@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Service | $location.search()</title>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope, $location) {
+      $scope.txtName = '';
+      $scope.submitClick = () => $location.search("uname", $scope.txtName);
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <form>
+      Your Name:<input type="text" name ="txtName" ng-model="txtName">
+      <button ng-click="submitClick()">Submit</button>
+  </form>
+</body>
+</html>

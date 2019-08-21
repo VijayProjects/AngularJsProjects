@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Validation | FormStateValidation</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body data-ng-app>
+  <div class="container">
+    <h2>Form State Validation</h2>
+    <form name="frmRegister" novalidate>
+      <label for="">Your Name</label>
+      <input ng-init="txtName='Vijay'" type="text" name="txtName" ng-model="txtName" size="50" required>
+      <br>
+      <label for="">Your Mobile</label>
+      <input ng-init="txtMobile='9876543210'" type="text" name="txtMobile" ng-model="txtMobile" size="50" required pattern="\+91[0-9]{10}">
+      <br>
+      <button ng-disabled="frmRegister.$invalid">Submit</button>
+      <button ng-disabled="frmRegister.$pristine">Save</button>
+    </form>
+    <br>
+    <div>
+      <table class="table">
+        <tr>
+          <th>$pristine - No fields have been modified</th>
+          <td>{{frmRegister.$pristine}}</td>
+        </tr>
+        <tr>
+          <th>$dirty - One or More fields have been modified</th>
+          <td>{{frmRegister.$dirty}}</td>
+        </tr>
+        <tr>
+          <th>$invalid - One or More fields have been modified</th>
+          <td>{{frmRegister.$invalid}}</td>
+        </tr>
+        <tr>
+          <th>$valid - The form have been valid</th>
+          <td>{{frmRegister.$valid}}</td>
+        </tr>
+        <tr>
+          <th>$submitted - The form have been submitted</th>
+          <td>{{frmRegister.$submitted}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
