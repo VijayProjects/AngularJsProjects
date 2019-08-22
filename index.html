@@ -1,18 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="Scripts/angular.js"></script>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJs | Routing</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="Scripts/angular.js"></script>
+  <script src="Scripts/angular-route.js"></script>
+  <script src="modules/DemoModule.js"></script>
+  <script src="controllers/HomeController.js"></script>
+  <script src="controllers/AboutController.js"></script>
+  <script src="controllers/ContactController.js"></script>
 </head>
-<body ng-app>
-    <div class="container">
-        <h1 class="text-danger">Idex Page of AngularJs</h1>
-        Addition {{10 + 30}}
-        
-    </div>
+
+<body ng-app="DemoApp">
+  <div class="container">
+    <h2 class="text-center text-white bg-primary">NareshIT | Hyderabad</h2>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#!home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!about">AboutUs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#!contact">ContactUs</a>
+        </li>
+      </ul>
+      <div class="mt-5 pr-4" style="height: 300px;">
+        <ng-view></ng-view>
+      </div>
+      <div class="bg-dark text-white text-center">
+        &copy;copyrights reserved - 2019 <br>
+        Faculty | Courses | Development
+      </div>
+  </div>
+
 </body>
+
 </html>

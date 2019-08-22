@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AngularJs | Routing Demo</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="Scripts/angular.js"></script>
+  <script src="Scripts/angular-route.js"></script>
+  <script>
+    var app = angular.module("DemoApp", ['ngRoute']);
+    //config routing
+    app.config(function($routeProvider) {
+      $routeProvider
+      .when("/", {
+        template: "<h2>Welcome To NareshIT Online Tutorials</h2>"
+      })
+      .when("/js", {
+        template: "<h2>JavaScript</h2><ol><li>Variables</li><li>DataType</li><li>Operators</li></ol>"
+      })
+      .when("/jq", {
+        template: "<h2>JQuery</h2><ol><li>JQuery Selectors</li><li>JQuery Events</li><li>JQuery Effects</li></ol>"
+      })
+      .when("/ng", {
+        template: "<h2>AngularJs</h2><ol><li>Modules</li><li>Directives</li><li>Services</li></ol>"
+      })
+    });
+    app.controller("HomeController", function($scope) {  
+    })
+  </script>
+</head>
+<body ng-app="DemoApp">
+  <nav class="navbar navbar-expand-sm bg-danger navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#!js">JavaScript</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!jq">JQuery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!ng">AngularJs</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <h2 class="text-center text-primary bg-warning">NareshIT | Hyderabad</h2>
+    <div style="height: 400px">
+      <ng-view></ng-view>
+    </div>
+    <div class="footer bg-dark text-white text-center">
+      &copy;copyright reservered 2019 <br>
+      Faculty | Courses | Development
+    </div>
+  </div>
+</body>
+</html>
