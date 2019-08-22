@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Validation | CssClassValidation</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    var app = angular.module("DemoApp", []);
+    app.controller("HomeController", function($scope) {
+    });
+  </script>
+  <style>
+    span {
+      color:red;
+    }
+    input.ng-invalid {
+      border: 2px red solid;
+    }
+    input.ng-valid {
+      border: 2px green solid;
+    }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <div class="w-50 m-auto border p-4 bg-light">
+      <h2 class="text-danger text-center">Register User</h2>
+      <form name="frmRegister" novalidate method="POST" action="#">
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="text" name="txtName" ng-model="txtName" class="form-control"
+            required ng-minlength="4" ng-maxlength="10">
+            <span ng-if="frmRegister.txtName.$touched && frmRegister.txtName.$error.required">Name is required</span>
+            <span ng-if="frmRegister.txtName.$error.minlength">Name is too short..</span>
+            <span ng-if="frmRegister.txtName.$error.maxlength">Name is too long..</span>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="text" name="txtMobile" ng-model="txtMobile" class="form-control"
+            required pattern="\+91[0-9]{10}">
+            <span ng-if="frmRegister.txtMobile.$touched && frmRegister.txtMobile.$error.required">Mobile is required</span>
+            <span ng-if="frmRegister.txtMobile.$error.pattern">Invalid Mobile</span>
+        </div>
+        <button class="btn btn-primary btn-block" ng-disabled="frmRegister.$invalid">Register</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

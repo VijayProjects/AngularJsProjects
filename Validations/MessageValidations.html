@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Validation | MessageValidation</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../node_modules/angular/angular.js"></script>
+  <script src="../Scripts/angular-messages.js"></script>
+  <script>
+    var app = angular.module("DemoApp", ['ngMessages']);
+    app.controller("HomeController", function($scope) {
+    });
+  </script>
+  <style>
+    span {
+      color:red;
+    }
+  </style>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <div class="w-50 m-auto border p-4 bg-light">
+      <h2 class="text-danger text-center">Register User</h2>
+      <form name="frmRegister" novalidate method="POST" action="#">
+        <div class="form-group">
+          <label>User Name</label>
+          <input type="text" name="txtName" ng-model="txtName" class="form-control"
+            required ng-minlength="4" ng-maxlength="10">
+           <div ng-messages="frmRegister.txtName.$error">
+            <span ng-message="required">Name is required</span>
+            <span ng-message="minlength">Name is too short..</span>
+            <span ng-message="maxlength">Name is too long..</span>
+           </div>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number</label>
+          <input type="text" name="txtMobile" ng-model="txtMobile" class="form-control"
+            required pattern="\+91[0-9]{10}">
+            <div ng-messages="frmRegister.txtMobile.$error">
+              <span ng-message="required">Name is required</span>
+              <span ng-message="pattern">Name is too short..</span>
+             </div>
+        </div>
+        <button class="btn btn-primary btn-block" ng-disabled="frmRegister.$invalid">Register</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
