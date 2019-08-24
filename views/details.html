@@ -1,0 +1,23 @@
+<div>
+  <h2>Products Details</h2>
+</div>
+<div>
+  <table class="table table-hover table-bordered">
+    <thead class="bg-danger text-white">
+      <th>ProductId</th>
+      <th>ProductName</th>
+      <th>Price</th>
+      <th>Preview</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="product in products">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>
+          <a href="#!{{product.id}}" class="btn btn-outline-success">Details</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

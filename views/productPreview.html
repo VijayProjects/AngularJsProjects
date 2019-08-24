@@ -1,0 +1,15 @@
+<div class="card-deck" ng-repeat="product in products">
+  <div class="card text-center" ng-if="product.id==params.id">
+    <div class="card-header">
+      <h2>{{product.name}}</h2>
+    </div>
+    <div>
+      <img ng-src="{{product.photo}}" width="200" height="200">
+    </div>
+    <div class="card-footer">
+      <h2>{{product.price | currency:'&#8377;'}}</h2>
+    </div>
+    <br>
+    <a class="btn btn-danger" href="#!">back</a>
+  </div>
+</div>

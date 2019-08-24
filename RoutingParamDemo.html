@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Routing | routeParam</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="Scripts/angular.js"></script>
+  <script src="Scripts/angular-route.js"></script>
+  <script>
+    var app = angular.module("DemoApp", ['ngRoute']);
+    app.config(function($routeProvider) {
+      $routeProvider
+      .when("/details/:id/:name/:desg", {
+        template: "<h2>User Details</h2>"
+      });
+    });
+    // Controller
+    app.controller("HomeController", function($scope, $routeParams) {
+      $scope.Details = $routeParams;
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <div class="container">
+    <a href="#!details/1001/Vijay/SSE" class="btn btn-primary">Get Details</a>
+    <div class="ng-view"></div>
+    <div>
+      <dl>
+        <dt>User Id</dt>
+        <dd>{{Details.id}}</dd>
+        <dt>User Name</dt>
+        <dd>{{Details.name}}</dd>
+        <dt>Job</dt>
+        <dd>{{Details.desg}}</dd>
+      </dl>
+    </div>
+  </div>
+</body>
+</html>
