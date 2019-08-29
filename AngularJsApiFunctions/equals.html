@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Api Functions | equals()</title>
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+  <script src="../Scripts/angular.js"></script>
+  <script>
+    const app = angular.module("DemoApp", []);
+    app.controller("HomeController", $scope => {
+      $scope.userDetails = { txtName:'Vijay', txtPwd:'Vijay123' };
+      $scope.Login = user => {
+        var result = angular.equals(user, $scope.userDetails);
+        (result)?location.href="loginSuccess.html" : location.href = "errorPage.html";
+      }
+    });
+  </script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController"> 
+  <div class="container">
+    <fieldset>
+      <legend>Login Page</legend>
+      <dl>
+        <dt>User Name</dt>
+        <dd>
+          <input type="text" name="txtName" ng-model="user.txtName" class="form-control">
+        </dd>
+        <dt>Password</dt>
+        <dd>
+          <input type="password" name="txtPwd" ng-model="user.txtPwd" class="form-control">
+        </dd>
+      </dl>
+      <br>
+      <button ng-click="Login(user)" class="btn btn-primary">Login</button>
+    </fieldset>
+  </div>
+</body>
+</html>

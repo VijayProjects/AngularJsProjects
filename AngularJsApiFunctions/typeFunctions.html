@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Api Functions | Type Functions</title>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>Produccts</h2>
+  <dl>
+    <dt>ProductName</dt>
+    <dd>{{product.name}}</dd>
+    <dt>Price</dt>
+    <dd>{{product.price}}</dd>
+  </dl>
+  <script src="../node_modules/angular/angular.js"></script>
+  <script>
+    const app = angular.module("DemoApp", []);
+    app.controller("HomeController", function ($scope) {
+      $scope.product = {
+        name: 'tv',
+        price: 45000.55
+      }
+      $scope.newProduct = 'LG Mobile';
+      const result = angular.isNumber($scope.newProduct);
+      if(result) {
+        $scope.product.price = $scope.newProduct;
+      }
+    });
+  </script>
+</body>
+</html>
