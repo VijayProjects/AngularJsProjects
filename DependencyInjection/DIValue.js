@@ -1,0 +1,1 @@
+app.value("basePrice", 45000.99);

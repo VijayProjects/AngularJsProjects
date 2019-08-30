@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DI | Factory</title>
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>{{title}}</h2>
+   <dl>
+     <dt>Product Name</dt>
+     <dd>{{product.name}}</dd>
+     <dt>Price</dt>
+     <dd>{{product.price}}</dd>
+     <dt>Quantity</dt>
+     <dd>{{product.qty}}</dd>
+     <dt>TotalAmount</dt>
+     <dd>{{total}}</dd>
+     <dt>Max Value</dt>
+     <dd>{{max(4000, 5000)}}</dd>
+   </dl>
+  
+  <!--script files-->
+  <script src="../modules/DemoApp.js"></script>
+  <script src="../DependencyInjection/DIFactory.js"></script>
+  <script>
+    app.controller("HomeController", ($scope, ProductFactory) => {
+      $scope.title = ProductFactory.title("product details");
+      $scope.product = {
+        name: 'Samsung TV',
+        price: 79000,
+        qty: 2
+      }
+      $scope.total = ProductFactory.total($scope.product.price, $scope.product.qty);
+      $scope.max = (value1, value2) => ProductFactory.maxValue(value1, value2);
+    });
+  </script>
+</body>
+</html>

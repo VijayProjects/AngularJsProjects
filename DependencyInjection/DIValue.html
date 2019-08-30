@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DI | Value</title>
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>Products Details</h2>
+  <select ng-change="ChangeCity()" ng-model="lstCities">
+    <option>Hyd</option>
+    <option>Mumbai</option>
+    <option>Delhi</option>
+  </select>
+  <dl>
+    <dt>Product Name</dt>
+    <dd>{{product.name}}</dd>
+    <dt>Price</dt>
+    <dd>{{product.price}}</dd>
+  </dl>
+  <!--javascript files-->
+  <script src="../modules/DemoApp.js"></script>
+  <script src="../DependencyInjection/DIValue.js "></script>
+  <script>
+    app.controller("HomeController", function ($scope, basePrice) {
+      $scope.product = {
+        name: 'TV',
+        price: basePrice
+      };
+      $scope.newProduct = 'LG Mobile';
+      $scope.lstCities = '';
+      var result = angular.isNumber($scope.newProduct);
+      if (result) {
+        $scope.product.price = $scope.newProduct;
+      }
+      $scope.ChangeCity = () => {
+        switch ($scope.lstCities) {
+          case 'Delhi':
+            basePrice = 67990.22;
+            break;
+          case 'Mumbai':
+            basePrice = 46080.22;
+            break;
+          case 'Hyd':
+            basePrice = 88990.22;
+            break;
+        }
+        $scope.product.price = basePrice;
+      }
+    });
+  </script>
+</body>
+
+</html>

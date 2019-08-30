@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DI | SentenceCase Filter</title>
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>{{msg | sentancecase}}</h2>
+  <h2>{{msg | titlecase }}</h2>
+  <script src="../modules/DemoApp.js"></script>
+  <script src="../DependencyInjection/DIFilter.js"></script>
+  <script>
+    app.controller("HomeController", function($scope) {
+      $scope.msg = "welcome To Angular JS";
+    });
+  </script>
+</body>
+</html>

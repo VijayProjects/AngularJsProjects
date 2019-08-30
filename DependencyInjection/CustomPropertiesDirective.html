@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DI | Custom Properties Directive</title>
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <h2>Product Details</h2>
+  <ng-product product="tv"></ng-product>
+
+
+  <script src="../modules/DemoApp.js"></script>
+  <script src="../DependencyInjection/CustomPropertiesDirective.js"></script>
+  <script>
+    app.controller("HomeController", function ($scope) {
+      $scope.tv = {
+        name: 'Samsung TV',
+        price: 78999.88
+      }
+      $scope.shoe = {
+        name: 'Nike Casuals',
+        price: 3499.79
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DI | Service</title>
+  <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="DemoApp" ng-controller="HomeController">
+  <fieldset>
+    <legend>Login Page</legend>
+    <dt>User Name</dt>
+    <dd><input type="text" size="40"></dd>
+    <dt>Email</dt>
+    <dd><input type="text" size="40"></dd>
+    <dt>Verify Code</dt>
+    <dd>{{captcha}}</dd>
+    <br>
+    <button ng-click="refreshCode()">Refresh</button>
+  </fieldset>
+
+  <script src="../modules/DemoApp.js"></script>
+  <script src="../DependencyInjection/CaptchService.js"></script>
+  <script>
+    app.controller("HomeController", ($scope, CaptchaService) => {
+      $scope.captcha = CaptchaService.catpchaCode();
+      $scope.refreshCode = () => {
+        $scope.captcha = CaptchaService.catpchaCode();
+      }
+    });
+  </script>
+</body>
+</html>
