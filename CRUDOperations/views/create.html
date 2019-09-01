@@ -1,0 +1,32 @@
+<div align="center">
+    <h2>Create</h2>
+    <form ng-submit="CreateProduct(product)">
+        <fieldset>
+            <legend>Add New Product</legend>
+            <div>
+                <table border="1" width="400">
+                    <tr>
+                        <td>Product Id</td>
+                        <td><input type="number" ng-model="product.ProductId"/></td>
+                    </tr>
+                    <tr>
+                        <td>Product Name</td>
+                        <td><input type="type" ng-model="product.Name"/></td>
+                    </tr>
+                    <tr>
+                        <td>Product Price</td>
+                        <td><input type="text" ng-model="product.Price"/></td>
+                    </tr>
+                    <tr>
+                        <td>Manufactured</td>
+                        <td><input type="text" ng-model="product.Manufactured"/></td>
+                    </tr>
+                    <td colspan="2" align="center">
+                        <button>Create</button>
+                    </td>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+
+</div>

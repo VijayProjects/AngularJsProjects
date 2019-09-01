@@ -1,0 +1,32 @@
+<div align="center" ng-controller="DeleteController">
+    <form ng-submit="DeleteProduct(product)">
+        <fieldset>
+            <legend>Delete a Product</legend>
+            <div>
+                <table border="1" width="400">
+                    <tr>
+                        <td>Product Id</td>
+                        <td><input type="number" ng-model="product[0].ProductId" /></td>
+                    </tr>
+                    <tr>
+                        <td>Product Name</td>
+                        <td><input type="type" ng-model="product[0].Name" /></td>
+                    </tr>
+                    <tr>
+                        <td>Product Price</td>
+                        <td><input type="text" ng-model="product[0].Price"/></td>
+                    </tr>
+                    <tr>
+                        <td>Manufactured</td>
+                        <td><input type="text" ng-model="product[0].Manufactured" /></td>
+                    </tr>
+                    <td colspan="2" align="center">
+                        <button>Delete Product</button>
+                    </td>
+                </table>
+
+            </div>
+        </fieldset>
+    </form>
+
+</div>
